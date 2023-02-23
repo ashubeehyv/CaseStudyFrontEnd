@@ -1,0 +1,9 @@
+.container-fluid{
+    display:flex;
+    justify-content: space-between;
+}
+
+.bg-primary{
+    background: #009688 !important;
+
+}
