@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  credentials={
+    userName:"",
+    password:""
+  }
+
+  constructor(){
+  }
+
+  onSubmit(){
+    console.log("Submit Button is working");
+  }
+
 }

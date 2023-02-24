@@ -1,0 +1,13 @@
+.loginBox{
+    width:400px;
+    margin: auto;
+    margin-top: 20px;
+    border: 0.5px solid  #009688 !important;
+    color: #009688 !important;
+    border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: #009688 !important;
+}
