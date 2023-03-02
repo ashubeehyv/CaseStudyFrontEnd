@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="text-center">Cart Details</h1>
+
+    <ng-container *ngFor="let cartItem of cart.cartItems">
+        <div class="flex-container">
+                <div class="image text-center">
+                    <img src="{{cartItem.product.imageUrl}}" alt="Product Image">
+                </div>
+                <div>
+                    <h1 class="mt-0 mb-1">{{cartItem.product.name}}</h1>
+                    <p class="mb-0">{{cartItem.product.detail}}</p>
+                    <h3>{{cartItem.product.price|currency : '&#8377;'}}</h3>
+                    <h4>
+                        <span>Quantity: {{cartItem.quantity}}
+                            <i (click)="increase(cartItem.product.productId)" class="fa fa-plus mx-2"></i>
+                            <i (click)="remove(cartItem.product.productId)" style="color:red" class="fa fa-trash"></i>
+                        </span>
+                    </h4>
+
+                    
+                    
+                </div>
+               
+
+        </div>
+        <hr>
+
+    </ng-container>
+
+
+</div>

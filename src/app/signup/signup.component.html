@@ -1,6 +1,39 @@
 <div class="signupBox">
     <div class="container-fluid">
         <h1 class="text-center mt-2">Signup</h1>
+    
+        <form (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Name:</mat-label>
+                <input [(ngModel)]="signupData.name" name= "name" type="text" matInput required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email:</mat-label>
+                <input [(ngModel)]="signupData.email" name= "email" type="email" matInput required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password:</mat-label>
+                <input [(ngModel)]="signupData.password" name="password" type="password" matInput required>
+            </mat-form-field>
+            
+            <div class="text-center mt-2">
+                <button class="btn btn-success mt-3 mx-auto" type="submit">Signup</button>
+            </div>
+            
+            <div class="text-center mt-3 mb-3">
+                <h4>Already have an account? <a routerLink="/login">Signup</a></h4>
+            </div>
+    
+        </form>
+        {{signupData|json}}
+    </div>
+
+</div>
+
+<!-- <div class="signupBox">
+    <div class="container-fluid">
+        <h1 class="text-center mt-2">Signup</h1>
 
         <form>
 
@@ -29,4 +62,4 @@
 
         </form>
     </div>
-</div>
+</div> -->

@@ -5,12 +5,13 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #ce4a4a;
     overflow-x: hidden;
     padding-top: 65px;
+    padding-left: 10px ;
 }
 .productDashboard{
     margin-left: 250px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    background-color: #f0d4d4;
+     /* Increased text to enable scrolling */
+    /* background-color: #f0d4d4; */
+    padding: 20px;
   }

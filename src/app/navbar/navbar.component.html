@@ -12,9 +12,14 @@
         </div>
 
         <div>
-            <a class="navbar-brand mx-3" routerLink="/login"  >Login</a>
+            <a *ngIf="!loggedIn" class="navbar-brand mx-3" routerLink="/login"  >Login</a>
 
-            <a class="navbar-brand" href="#">Cart()</a>
+            <a *ngIf="loggedIn" class="navbar-brand mx-3" >{{User?.name}}</a>
+ 
+            
+
+            <a *ngIf="loggedIn" class="navbar-brand" routerLink="/cart"><i style = "font-size: 30px;" class="fa fa-cart-plus"></i><div style="font-size:10px" class="badge bg-danger">{{cartItemCount}}</div></a>
+            <a *ngIf="loggedIn" class="navbar-brand mx-1" (click)="logoutUser()"  ><i style = "font-size: 30px;" class="fa fa-sign-out"></i></a>
         </div>
 
     </div>
