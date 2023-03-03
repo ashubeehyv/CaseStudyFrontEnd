@@ -43,8 +43,8 @@ export class SidebarComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("Submit Button is working");
-    console.warn(this.filter)
+    this.productService.getfilteredProduct(this.filter);
+
   }
 
 }

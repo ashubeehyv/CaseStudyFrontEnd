@@ -11,10 +11,12 @@ export class ProductDashboardComponent {
   products:any;
 
   constructor(private productService: ProductServiceService, private cartService: CartService) {
+    
   }
   ngOnInit() {
-    this.productService.getAllProducts().subscribe(
-      response=>{
+    this.productService.getAllProducts();
+    this.productService.Products.subscribe(
+      (response:any)=>{
         // console.log(response);
         this.products = response;
         // console.log(this.products);
@@ -22,13 +24,12 @@ export class ProductDashboardComponent {
       }
     );
 
-
   }
 
   addItemToCart(productId:number){
     this.cartService.addItem(productId).subscribe(
       response=>{
-        
+
         console.log(response);
       },
       error=>{

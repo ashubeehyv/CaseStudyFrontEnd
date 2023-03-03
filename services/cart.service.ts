@@ -16,7 +16,7 @@ export class CartService {
   addItem(productId:number){
     return this.http.get(`${this.url}/add/${productId}`);
   }
-  removeProduct(productId:number){
-    return this.http.get(`${this.url}/remove/${productId}`);
+  removeProduct(cartItemId:number){
+    return this.http.delete(`${this.url}/remove/${cartItemId}`);
   }
 }

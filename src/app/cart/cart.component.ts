@@ -38,8 +38,8 @@ export class CartComponent {
 
     );
   }
-  remove(productId: number) {
-    this.cartService.removeProduct(productId).subscribe(
+  remove(cartItemId:number) {
+    this.cartService.removeProduct(cartItemId).subscribe(
       response => {
         this.fetchCart();
       },
