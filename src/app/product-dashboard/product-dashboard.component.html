@@ -1,18 +1,67 @@
-<div class="container">
-    <div class="row">
-        <ng-container *ngFor="let product of products">
-            <div  class ="col-3 item" >
-                <div class="image mb-2">
-                    <img src={{product.imageUrl}}>
+<div class="sidebar">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group mt-2">
+        <label for="category">Category:</label>
+        <select class="form-control" id="category" [(ngModel)]="filter.category" name="category">
+          <option selected="Select All">Select All</option>
+          <option *ngFor="let category of categories" value="{{category.categoryName}}">{{category.categoryName}}</option>
+        </select>
+      </div>
+      <div class="form-group mt-2">
+        <label for="category">Sub-Category:</label>
+        <select class="form-control" id="category" [(ngModel)]="filter.subCategory" name="subCategory">
+          <option selected="Select All">Select All</option>
+    
+          <ng-container *ngFor="let subCategory of subCategories">
+            <option value="{{subCategory.subCategoryName}}">{{subCategory.subCategoryName}}</option>
+          </ng-container>
+        </select>
+      </div>
+      <h3 class="mt-2">Price Range:</h3>
+      <div class="d-flex">
+          <div class="form-group" style="margin-right: 10px;">
+            <label>Min Value:</label>
+            <input [(ngModel)]="filter.minValue" name= "minValue" type="text" value="0" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Max Value:</label>
+          <input [(ngModel)]="filter.maxValue" name= "miaxValue" type="text" value="100000" class="form-control">
+        </div>
+      </div>
+      <div class="box">
+        <div class="m-2">
+          <button class="btn btn-success mt-3 mx-auto" type="submit">Apply</button>
+        </div>
+        <!-- <div class="mt-2">
+          <button class="btn btn-success mt-3 mx-auto" type="reset">reset</button>
+        </div> -->
+    
+      </div>
+    
+    
+    </form>
+    <p>{{filter|json}}</p>
+  
+  </div>
+  
+<div class="productDashboard">
+    <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let product of products">
+                <div  class ="col-3 item" >
+                    <div class="image mb-2">
+                        <img src={{product.imageUrl}}>
+                    </div>
+                    <h3>{{product.name}}</h3>
+                    <p>{{product.detail}}</p>
+                    <h5>{{product.price|currency : '&#8377;'}}</h5>
+                    <span><button (click)="addItemToCart(product.productId)" class="btn btn-outline-light bg-primary mb-2">Add to Cart</button></span>
                 </div>
-                <h3>{{product.name}}</h3>
-                <p>{{product.detail}}</p>
-                <h5>{{product.price|currency : '&#8377;'}}</h5>
-                <span><button (click)="addItemToCart(product.productId)" class="btn btn-outline-light bg-primary mb-2">Add to Cart</button></span>
-            </div>
-
-        </ng-container>
-
+    
+            </ng-container>
+    
+        </div>
+    
     </div>
 
 </div>

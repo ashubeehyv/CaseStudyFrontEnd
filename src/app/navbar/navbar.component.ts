@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from 'services/cart.service';
 import { LoginService } from 'services/login.service';
+import { ProductServiceService } from 'services/product-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,8 +13,8 @@ export class NavbarComponent {
 
   User:any;
   cartItemCount=0;
-
-  constructor(private loginService:LoginService, private cartService:CartService){
+  searchString="";
+  constructor(private loginService:LoginService, private cartService:CartService, private productService:ProductServiceService){
 
   }
   
@@ -27,9 +28,6 @@ export class NavbarComponent {
           this.User = response;
         }, 5000);
         // console.warn(this.User);
-      },
-      error=>{
-        console.log(error);
       }
       
     );
@@ -40,12 +38,10 @@ export class NavbarComponent {
 
   }
   fetchCartItemCount(){
-    this.cartService.getCart().subscribe(
+    this.cartService.getCart();
+    this.cartService.Cart.subscribe(
       (response:any)=>{
         this.cartItemCount = Object.keys(response.cartItems).length;
-      },
-      error=>{
-        console.log(error);
       }
     );
 
@@ -54,6 +50,9 @@ export class NavbarComponent {
   logoutUser(){
     this.loginService.logout();
     location.reload();
+  }
+  onSubmit(){
+    this.productService.getSearchedProduct(this.searchString);
   }
 
 }

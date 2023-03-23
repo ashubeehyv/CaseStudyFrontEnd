@@ -18,7 +18,6 @@ export class SidebarComponent implements OnInit {
     maxValue:1000000000
 
   }
-  MinValue = 0;
 
   constructor(private productService: ProductServiceService, private fb: FormBuilder) {
 

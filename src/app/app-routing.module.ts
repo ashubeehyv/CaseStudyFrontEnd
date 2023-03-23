@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'services/auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProductDashboardComponent } from './product-dashboard/product-dashboard.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
@@ -13,6 +16,10 @@ const routes: Routes = [
   {
     path:'signup',
     component:SignupComponent
+  },
+  {
+    path:'',
+    component:ProductDashboardComponent
   },
   {
     path:'cart',

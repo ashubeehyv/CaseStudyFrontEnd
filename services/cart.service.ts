@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +8,19 @@ import { Injectable } from '@angular/core';
 export class CartService {
   url = "http://localhost:8080/cart";
 
+  Cart = new Subject<any[]>();
+
   constructor(private http:HttpClient) { }
 
+  // getCart(){
+  //   return this.http.get(`${this.url}/getCart`);
+  // }
   getCart(){
-    return this.http.get(`${this.url}/getCart`);
+    this.http.get(`${this.url}/getCart`).subscribe(
+      (response:any)=>{
+        this.Cart.next(response);
+      }
+    );
   }
 
   addItem(productId:number){

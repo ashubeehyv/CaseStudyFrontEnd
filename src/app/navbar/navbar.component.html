@@ -5,9 +5,13 @@
         </div>
 
         <div>
-            <form class="d-flex form-control-sm" role="search">
-                <input class="form-control  me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex form-control-sm" (ngSubmit)="onSubmit()">
+                <input class="form-control  me-2" [(ngModel)]="searchString" type="search" placeholder="Search" aria-label="Search" name="searchString">
                 <button class="btn btn-outline-light" type="submit">Search</button>
+                <!-- <div class="form-group" style="margin-right: 10px;">
+                    <label>Min Value:</label>
+                    <input [(ngModel)]="searchString" name= "minValue" type="text" value="0" class="form-control">
+                </div> -->
             </form>
         </div>
 

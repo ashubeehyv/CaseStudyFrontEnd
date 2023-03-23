@@ -9,18 +9,43 @@ import { ProductServiceService } from 'services/product-service.service';
 })
 export class ProductDashboardComponent {
   products:any;
+  categories: any;
+  subCategories: any;
+  filter={
+    category:"Select All",
+    subCategory:"Select All",
+    minValue:0,
+    maxValue:1000000
+
+  }
 
   constructor(private productService: ProductServiceService, private cartService: CartService) {
     
   }
   ngOnInit() {
     this.productService.getAllProducts();
-    this.productService.Products.subscribe(
+    this.productService.ProductData.subscribe(
       (response:any)=>{
         // console.log(response);
         this.products = response;
         // console.log(this.products);
         
+      }
+    );
+    this.productService.getAllCategories().subscribe(
+      response => {
+        // console.log(response);
+        this.categories = response;
+        // console.log(this.categories);
+
+      }
+    );
+    this.productService.getAllSubCategories().subscribe(
+      response => {
+        // console.log(response);
+        this.subCategories = response;
+        // console.log(this.subCategories);
+
       }
     );
 
@@ -29,15 +54,17 @@ export class ProductDashboardComponent {
   addItemToCart(productId:number){
     this.cartService.addItem(productId).subscribe(
       response=>{
+        this.cartService.getCart();
 
         console.log(response);
-      },
-      error=>{
-        console.error(error);
-        
       }
       
     );
+  }
+
+  onSubmit(){
+    this.productService.getfilteredProduct(this.filter);
+
   }
   
   

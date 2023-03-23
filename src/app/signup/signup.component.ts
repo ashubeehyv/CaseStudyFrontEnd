@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'services/login.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +14,7 @@ export class SignupComponent {
     email:"",
     password:""
   };
-  constructor(private loginService: LoginService){
+  constructor(private loginService: LoginService, private router: Router){
 
   }
 
@@ -26,7 +28,7 @@ export class SignupComponent {
             this.loginService.doLogin(response).subscribe(
               (result:any)=>{
                 this.loginService.loginUser(result.token);
-                window.location.href="/";
+                this.router.navigateByUrl("");
               },
               error=>{
                 console.log(error);

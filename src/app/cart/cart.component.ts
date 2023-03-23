@@ -16,7 +16,8 @@ export class CartComponent {
   }
 
   fetchCart() {
-   this.cartService.getCart().subscribe(
+    this.cartService.getCart();
+    this.cartService.Cart.subscribe(
       response => {
         this.cart = response;
 
@@ -30,10 +31,6 @@ export class CartComponent {
     this.cartService.addItem(productId).subscribe(
       response => {
         this.fetchCart();
-      },
-      error => {
-        console.error(error);
-
       }
 
     );
@@ -42,13 +39,9 @@ export class CartComponent {
     this.cartService.removeProduct(cartItemId).subscribe(
       response => {
         this.fetchCart();
-      },
-      error => {
-        console.error(error);
-
       }
 
-    );;
+    );
   }
 
 }

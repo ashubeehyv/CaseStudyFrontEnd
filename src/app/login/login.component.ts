@@ -1,4 +1,5 @@
 import { Component, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'services/login.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent {
     password:""
   };
 
-  constructor(private loginService:LoginService){
+  constructor(private loginService:LoginService, private router: Router){
   }
 
   onSubmit(){
@@ -24,11 +25,7 @@ export class LoginComponent {
         .subscribe(
           (response:any)=>{
             this.loginService.loginUser(response.token);
-            window.location.href="/";
-            
-          },
-          error=>{
-            console.log(error);
+            this.router.navigateByUrl("");
             
           }
           
