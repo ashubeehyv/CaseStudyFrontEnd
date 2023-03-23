@@ -10,7 +10,6 @@ import { OrderService } from 'services/order.service';
 export class OrderComponent {
   
   OrderHistoryData:any;
-
   constructor(private orderService: OrderService){
 
   }
@@ -23,5 +22,9 @@ export class OrderComponent {
           console.log(response);
       }
     )
+  }
+
+  getOrderTotal(cartItems:any[]){
+    return this.orderService.getTotalBill(cartItems);
   }
 }
