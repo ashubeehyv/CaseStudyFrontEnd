@@ -26,25 +26,19 @@ export class ProductDashboardComponent {
     this.productService.getAllProducts();
     this.productService.ProductData.subscribe(
       (response:any)=>{
-        // console.log(response);
         this.products = response;
-        // console.log(this.products);
         
       }
     );
     this.productService.getAllCategories().subscribe(
       response => {
-        // console.log(response);
         this.categories = response;
-        // console.log(this.categories);
 
       }
     );
     this.productService.getAllSubCategories().subscribe(
       response => {
-        // console.log(response);
         this.subCategories = response;
-        // console.log(this.subCategories);
 
       }
     );
@@ -52,14 +46,7 @@ export class ProductDashboardComponent {
   }
 
   addItemToCart(productId:number){
-    this.cartService.addItem(productId).subscribe(
-      response=>{
-        this.cartService.getCart();
-
-        console.log(response);
-      }
-      
-    );
+    this.cartService.addItem(productId);
   }
 
   onSubmit(){
