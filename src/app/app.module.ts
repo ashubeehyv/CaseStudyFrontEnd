@@ -19,6 +19,7 @@ import { LoginService } from 'services/login.service';
 import { AuthGuard } from 'services/auth.guard';
 import { AuthInterceptor } from 'services/auth.interceptor';
 import { CartComponent } from './cart/cart.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CartComponent } from './cart/cart.component';
     routingComponents,
     SidebarComponent,
     ProductDashboardComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

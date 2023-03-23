@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="text-center">Order History</h1>
+    <hr>
+
+    <ng-container *ngFor="let order of OrderHistoryData">
+        <div class="flex-container">
+            <div>
+                {{order.orderDate}}
+            </div>
+            <ng-container *ngFor="let item of order.cartItems">
+                <div>{{item.product.name}}</div>
+                <div>{{item.product.price}}</div>
+                <div>{{item.quantity}}</div>
+
+
+            </ng-container>
+
+        </div>
+        <hr>
+
+    </ng-container>
+
+
+
+    
+
+
+
+</div>

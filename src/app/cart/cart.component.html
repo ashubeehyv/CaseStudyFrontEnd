@@ -1,5 +1,6 @@
 <div class="container">
     <h1 class="text-center">Cart Details</h1>
+    <hr>
 
     <ng-container *ngFor="let cartItem of cart.cartItems">
         <div class="flex-container">
@@ -16,6 +17,7 @@
                             <i (click)="remove(cartItem.cartItemId)" style="color:red" class="fa fa-trash"></i>
                         </span>
                     </h4>
+                    <h3>Sub Total: {{cartItem.product.price * cartItem.quantity |currency : '&#8377;'}}</h3>
 
                     
                     
@@ -26,6 +28,18 @@
         <hr>
 
     </ng-container>
+
+    <h2 class="text-center"> Total Bill : {{Total_Bill}}</h2>
+    <div class="text-center">
+        <button class="btn btn-warning mt-3 mx-auto" (click)="placeOrder()">Place Order</button>      
+    </div>
+
+    <div class="text-center">
+        <a routerLink="/order" class="btn btn-success btn-block mt-3 mx-auto" role="button">Order History</a>
+    </div>
+
+    
+
 
 
 </div>

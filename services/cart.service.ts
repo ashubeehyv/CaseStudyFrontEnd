@@ -24,9 +24,26 @@ export class CartService {
   }
 
   addItem(productId:number){
-    return this.http.get(`${this.url}/add/${productId}`);
+    this.http.get(`${this.url}/add/${productId}`).subscribe(
+      (response:any)=>{
+        this.Cart.next(response);
+      }
+    );
   }
   removeProduct(cartItemId:number){
-    return this.http.delete(`${this.url}/remove/${cartItemId}`);
+    return this.http.delete(`${this.url}/remove/${cartItemId}`).subscribe(
+      (response:any)=>{
+        this.Cart.next(response);
+      }
+    );
+  }
+
+  placeOrder(){
+    this.http.get(`http://localhost:8080/order/place`).subscribe(
+      (response:any)=>{
+        this.Cart.next(response);
+      }
+    );
+
   }
 }

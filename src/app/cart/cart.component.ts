@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { CartService } from 'services/cart.service';
+import { OrderService } from 'services/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +9,8 @@ import { CartService } from 'services/cart.service';
 })
 export class CartComponent {
   cart: any;
-  constructor(private cartService: CartService) { }
+  Total_Bill=0;
+  constructor(private cartService: CartService, private orderService:OrderService) { }
 
   ngOnInit() {
     this.fetchCart();
@@ -20,28 +21,25 @@ export class CartComponent {
     this.cartService.Cart.subscribe(
       response => {
         this.cart = response;
+        this.Total_Bill = 0;
+        for(let cartItem of this.cart.cartItems){
+          this.Total_Bill = this.Total_Bill + cartItem.product.price * cartItem.quantity;
+        }
 
-      },
-      error => {
-        console.error(error);
       }
     );
   }
   increase(productId: number) {
-    this.cartService.addItem(productId).subscribe(
-      response => {
-        this.fetchCart();
-      }
-
-    );
+    this.cartService.addItem(productId);
   }
-  remove(cartItemId:number) {
-    this.cartService.removeProduct(cartItemId).subscribe(
-      response => {
-        this.fetchCart();
-      }
 
-    );
+  remove(cartItemId:number) {
+    this.cartService.removeProduct(cartItemId);
+  }
+
+  placeOrder(){
+    console.log("Its working");
+    this.cartService.placeOrder();
   }
 
 }
