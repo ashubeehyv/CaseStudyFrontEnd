@@ -29,4 +29,12 @@ export class OrderService {
     );
 
   }
+
+  getTotalBill(cartitems:any[]){
+    let total = 0
+    for(let cartItem of cartitems){
+      total = total + cartItem.product.price * cartItem.quantity;
+    }
+    return total;
+  }
 }

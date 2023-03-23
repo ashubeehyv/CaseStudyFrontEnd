@@ -21,10 +21,7 @@ export class CartComponent {
     this.cartService.Cart.subscribe(
       response => {
         this.cart = response;
-        this.Total_Bill = 0;
-        for(let cartItem of this.cart.cartItems){
-          this.Total_Bill = this.Total_Bill + cartItem.product.price * cartItem.quantity;
-        }
+        this.Total_Bill = this.orderService.getTotalBill(this.cart.cartItems);
 
       }
     );
@@ -38,7 +35,6 @@ export class CartComponent {
   }
 
   placeOrder(){
-    console.log("Its working");
     this.cartService.placeOrder();
   }
 
